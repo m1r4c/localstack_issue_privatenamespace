@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  localstack:
+    container_name: "localstack"
+    image: localstack/localstack-pro
+    ports:
+      - ":4566:4566"            # LocalStack Gateway
+      - ":4510-4559:4510-4559"  # external services port range
+    environment:
+      - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY- }
+      - SERVICES=${SERVICES-}
+      - DEBUG=${DEBUG-}
+      - DATA_DIR=${DATA_DIR-}
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
+      - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - SQS_ENDPOINT_STRATEGY=path
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

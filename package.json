@@ -1,0 +1,24 @@
+{
+  "name": "elpr-demo",
+  "version": "0.0.1",
+  "bin": {
+    "infrastructure": "src/main.js"
+  },
+  "scripts": {
+    "cdk": "tsc && cdk",
+    "cdklocal": "tsc && cdklocal --require-approval never",
+    "cdklocalbootstrap": "tsc && cdklocal bootstrap aws://000000000000/eu-central-1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.245.0",
+    "aws-cdk": "^2.60.0",
+    "aws-cdk-lib": "^2.60.0",
+    "constructs": "^10.1.218",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@types/validator": "^13.7.10",
+    "aws-cdk-local": "^2.15.0",
+    "typescript": "^4.9.4"
+  }
+}
